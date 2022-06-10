@@ -7,10 +7,21 @@ from median import compute_median
 
 def main():
     numbers = []
-    num = int(input("Enter a Number to Add to the List (999 to Stop): "))
-    while num != 999:
-        numbers.append(num)
+
+    input_type = int(input("Enter Input Type: 1 (Text File Input), 2 (Command Line Input): "))
+    if input_type == 1:
+        fileName = input("Enter the file name: ") # File name is LR1/PostLab Q1/num.txt
+        f = open(fileName, 'r')
+        for line in f:
+            words = line.split()
+            for word in words:
+                numbers.append(float(word))
+    else:
         num = int(input("Enter a Number to Add to the List (999 to Stop): "))
+        while num != 999:
+            numbers.append(num)
+            num = int(input("Enter a Number to Add to the List (999 to Stop): "))
+
     print("The created list of numbers is: ",numbers)
     select = int(input("Select Function 0 (Median), 1 (Mode), 2 (Mean): "))
     if select == 0:
